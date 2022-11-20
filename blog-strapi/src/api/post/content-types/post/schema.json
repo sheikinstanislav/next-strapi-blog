@@ -19,7 +19,9 @@
       "type": "string"
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "full_text": {
       "type": "richtext"
