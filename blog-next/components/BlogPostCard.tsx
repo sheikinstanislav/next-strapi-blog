@@ -16,6 +16,15 @@ const PostCard = styled.div`
 const PostCardContent = styled.div`
   padding: 18px 18px 24px;
 `;
+//TODO check adaptive/responsive
+const PostCardPicture = styled.picture`
+  width: 100%;
+  & img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+  }
+`;
 
 const PostCardTitle = styled.h2`
   color: #2d3748;
@@ -66,19 +75,30 @@ export const BlogPostCard: FC<IPostCardInfo> = ({
   text,
 }) => {
   return (
-    <Link href={`/post/${slug}`}>
+    <Link
+      css={{
+        ' @media (max-width: 575px)': {
+          display: 'flex',
+          justifyContent: 'center',
+        },
+      }}
+      href={`/post/${slug}`}
+    >
       <PostCard>
-        <Image
-          className="img"
-          src={`${BASE_URL}${imgUrl}`}
-          width="300"
-          height="180"
-          css={{
-            borderTopRightRadius: '5px',
-            borderTopLeftRadius: '5px',
-          }}
-          alt={`${title}-img`}
-        />
+        <PostCardPicture>
+          <Image
+            className="img"
+            src={`${BASE_URL}${imgUrl}`}
+            width="300"
+            height="180"
+            css={{
+              borderTopRightRadius: '5px',
+              borderTopLeftRadius: '5px',
+            }}
+            alt={`${title}-img`}
+          />
+        </PostCardPicture>
+
         <PostCardContent>
           <PostCardTitle>{title}</PostCardTitle>
           <PostCardText>{text}</PostCardText>

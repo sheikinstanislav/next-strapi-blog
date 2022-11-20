@@ -14,6 +14,7 @@ const PostPagePicture = styled.picture`
     width: 100%;
     height: auto;
     max-height: 450px;
+    object-fit: cover;
   }
 `;
 
@@ -61,8 +62,6 @@ const PostPageText = styled.div`
 `;
 
 const Post: FC<IPost> = (post) => {
-  console.log(post);
-
   return (
     <Layout>
       <div className="container">
@@ -128,7 +127,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  //TODO Replace "any"
   const { slug }: any = params;
   // Get single post by slug
   const { data } = await api.get(

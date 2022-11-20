@@ -15,6 +15,7 @@ export const Layout: FC<ILayoutProps> = ({ children, ...customMeta }) => {
   };
 
   return (
+    //TODO add template-wrapper & template-wrapper-inner to styled components
     <div className="template-wrapper">
       <div className="template-wrapper-inner">
         <Head>

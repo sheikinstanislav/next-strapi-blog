@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { FC } from 'react';
@@ -12,6 +13,34 @@ interface IPostsProps {
   posts: IPost[];
 }
 
+const PostPageImage = styled.picture`
+  max-width: 475px;
+  & img {
+    width: 100%;
+    @media (max-width: 575px) {
+      height: auto;
+      min-width: 350px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    max-width: unset;
+  }
+`;
+
+const PostsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 30px 0 170px;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 575px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
 const Home: FC<IPostsProps> = ({ posts }) => {
   return (
     <Layout>
@@ -23,6 +52,10 @@ const Home: FC<IPostsProps> = ({ posts }) => {
               justifyContent: 'space-between',
               alignItems: 'center',
               padding: '70px 0',
+              '@media (max-width: 991px)': {
+                flexDirection: 'column-reverse',
+                padding: '40px 0',
+              },
             }}
             className="hero"
           >
@@ -46,18 +79,13 @@ const Home: FC<IPostsProps> = ({ posts }) => {
               </p>
             </div>
             <div className="hero-right">
-              <Image src={HeroImage} alt="hero-img" />
+              <PostPageImage>
+                <Image src={HeroImage} alt="hero-img" />
+              </PostPageImage>
             </div>
           </div>
 
-          <div
-            css={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gridGap: '20px',
-              padding: '30px 0 170px',
-            }}
-          >
+          <PostsGrid>
             {posts &&
               posts.map((post) => (
                 <BlogPostCard
@@ -71,7 +99,7 @@ const Home: FC<IPostsProps> = ({ posts }) => {
                   }}
                 />
               ))}
-          </div>
+          </PostsGrid>
         </div>
       </main>
     </Layout>

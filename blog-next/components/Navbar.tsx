@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FC } from 'react';
-
+//TODO check adaptive/responsive & add styled components
 export const Navbar: FC = () => {
   return (
     <nav
