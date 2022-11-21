@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import Head from 'next/head';
 import { FC } from 'react';
 import { Footer } from '../components/Footer';
@@ -14,10 +15,16 @@ export const Layout: FC<ILayoutProps> = ({ children, ...customMeta }) => {
     ...customMeta,
   };
 
+  const TemplateWrapper = styled.div`
+    overflow: hidden;
+  `;
+  const TemplateWrapperInner = styled.div`
+    min-height: calc(100vh - 97px);
+  `;
+
   return (
-    //TODO add template-wrapper & template-wrapper-inner to styled components
-    <div className="template-wrapper">
-      <div className="template-wrapper-inner">
+    <TemplateWrapper>
+      <TemplateWrapperInner>
         <Head>
           <title>{meta.title}</title>
           <meta name="robots" content="follow, index" />
@@ -27,8 +34,8 @@ export const Layout: FC<ILayoutProps> = ({ children, ...customMeta }) => {
           <Navbar />
           {children}
         </div>
-      </div>
+      </TemplateWrapperInner>
       <Footer />
-    </div>
+    </TemplateWrapper>
   );
 };

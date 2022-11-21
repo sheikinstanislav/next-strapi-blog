@@ -1,6 +1,53 @@
+import styled from '@emotion/styled';
 import Link from 'next/link';
 import { FC } from 'react';
-//TODO check adaptive/responsive & add styled components
+
+const FooterWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+`;
+
+const FooterCopyright = styled.p`
+  font-size: 16px;
+  & span {
+    font-weight: 700;
+  }
+  @media (max-width: 576px) {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+`;
+
+const FooterList = styled.ul`
+  display: flex;
+  align-items: center;
+  & li {
+    margin-right: 30px;
+    & a {
+      svg {
+        path {
+          transition: all 0.3s ease-in-out;
+        }
+      }
+      :hover {
+        color: tomato;
+        & svg {
+          & path {
+            fill: tomato;
+          }
+        }
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
 export const Footer: FC = () => {
   return (
     <footer
@@ -13,42 +60,12 @@ export const Footer: FC = () => {
       }}
     >
       <div className="container">
-        <div
-          css={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            '@media (max-width: 576px)': {
-              flexDirection: 'column',
-            },
-          }}
-        >
-          <p
-            css={{
-              fontSize: '16px',
-              '& span': {
-                fontWeight: '700',
-              },
-              '@media (max-width: 576px)': {
-                marginBottom: '20px',
-              },
-            }}
-          >
+        <FooterWrapper>
+          <FooterCopyright>
             <span>hotcoffee </span>
             2022 copyright all rights reserved
-          </p>
-          <ul
-            css={{
-              display: 'flex',
-              alignItems: 'center',
-              '& li': {
-                marginRight: '30px',
-                '&:last-child': {
-                  marginRight: '0',
-                },
-              },
-            }}
-          >
+          </FooterCopyright>
+          <FooterList>
             <li>
               <Link href="#">
                 <svg
@@ -118,8 +135,8 @@ export const Footer: FC = () => {
                 </svg>
               </Link>
             </li>
-          </ul>
-        </div>
+          </FooterList>
+        </FooterWrapper>
       </div>
     </footer>
   );

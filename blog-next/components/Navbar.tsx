@@ -1,25 +1,57 @@
+import styled from '@emotion/styled';
 import Link from 'next/link';
 import { FC } from 'react';
-//TODO check adaptive/responsive & add styled components
+
+const Nav = styled.div`
+  padding: 35px 0;
+`;
+
+const NavWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 576px) {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+`;
+
+const NavList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & li {
+    margin-right: 30px;
+    & a {
+      display: flex;
+      align-items: center;
+      color: #000;
+      transition: all 0.3s ease-in-out;
+      svg {
+        path {
+          transition: all 0.3s ease-in-out;
+        }
+      }
+      :hover {
+        color: tomato;
+        & svg {
+          & path {
+            fill: tomato;
+          }
+        }
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
 export const Navbar: FC = () => {
   return (
-    <nav
-      css={{
-        padding: '35px 0',
-      }}
-    >
+    <Nav>
       <div className="container">
-        <div
-          css={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            '@media (max-width: 576px)': {
-              flexDirection: 'column',
-              padding: '20px 0',
-            },
-          }}
-        >
+        <NavWrapper>
           <Link
             css={{
               fontSize: '20px',
@@ -37,28 +69,7 @@ export const Navbar: FC = () => {
           >
             HotCoffee
           </Link>
-          <ul
-            css={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              '& li': {
-                marginRight: '30px',
-                '&:last-child': {
-                  marginRight: '0',
-                },
-                '& a': {
-                  display: 'flex',
-                  alignItems: 'center',
-                  color: '#000',
-                  transition: '.3s all',
-                  '&:hover': {
-                    color: 'tomato',
-                  },
-                },
-              },
-            }}
-          >
+          <NavList>
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -134,9 +145,9 @@ export const Navbar: FC = () => {
                 </svg>
               </Link>
             </li>
-          </ul>
-        </div>
+          </NavList>
+        </NavWrapper>
       </div>
-    </nav>
+    </Nav>
   );
 };

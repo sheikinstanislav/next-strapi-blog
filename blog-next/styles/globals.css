@@ -69,18 +69,6 @@ h6 {
   font-size: inherit;
 }
 
-.img {
-  max-width: 450px;
-}
-
-.template-wrapper {
-  overflow: hidden;
-}
-
-.template-wrapper-inner {
-  min-height: calc(100vh - 97px);
-}
-
 .container {
   max-width: 1170px;
   margin: auto;

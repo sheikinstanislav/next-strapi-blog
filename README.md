@@ -23,6 +23,11 @@ git clone https://github.com/sheikinstanislav/next-strapi-blog.git
 ```
 yarn && yarn seed && yarn develop
 ```
+or
+```
+npm i
+npm run dev
+```
 
 #### Credentials
 

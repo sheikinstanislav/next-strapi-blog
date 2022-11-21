@@ -16,7 +16,7 @@ const PostCard = styled.div`
 const PostCardContent = styled.div`
   padding: 18px 18px 24px;
 `;
-//TODO check adaptive/responsive
+
 const PostCardPicture = styled.picture`
   width: 100%;
   & img {
