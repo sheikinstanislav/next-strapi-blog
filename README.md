@@ -26,7 +26,7 @@ yarn && yarn seed && yarn develop
 or
 ```
 npm i
-npm run dev
+npm run develop
 ```
 
 #### Credentials
