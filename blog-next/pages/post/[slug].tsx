@@ -92,7 +92,7 @@ const Post: FC<IPost> = (post) => {
                   Written by {post.attributes.author}
                 </PostPageAuthor>
                 <PostPageDate>
-                  {format(parseISO(post.attributes.createdAt), 'EEEE MMMM MM')}
+                  {format(parseISO(post.attributes.createdAt), 'EEEE MMMM d')}
                 </PostPageDate>
               </div>
             </PostPageHeading>
